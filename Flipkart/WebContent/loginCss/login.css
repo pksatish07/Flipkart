@@ -1,0 +1,156 @@
+
+#tabs-1 {
+	font-size: 14px;
+	width: 680px;
+	background: white;
+}
+
+.ui-widget-header {
+	background: white;
+	border: 1px;
+	color: #FFFFFF;
+	font-weight: bold;
+	width: 500px;
+}
+
+.errorMessage {
+	background: none repeat scroll 0% 0% #FCE7E7;
+	border: 1px solid #B00;
+	color: #B00;
+	padding: 5px;
+	padding-bottom: 10px;
+	text-align: left;
+	display: none;
+	width: 260px;
+}
+
+#loginStyle,#SignupStyle {
+	color: black;
+}
+
+#container {
+	width: 680px;
+	
+}
+
+.colCustom {
+	width: 8.33333%;
+	position: relative;
+  	top: 25px;
+  	left: 20px;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 0px;
+}
+
+.modal-header .close {
+	margin-top: -2px;
+	margin-right: 6px;
+}
+
+.modal-content {
+	position: absolute;
+	border-width: 8px;
+	border-style:;
+	border-color: gray;
+	top:100px;
+	z-index:-1;
+}
+
+.ui-widget-content {
+	border: 0px;
+}
+
+.modal-body {
+	padding: 0px;
+	padding-top: 0px;
+	padding-right-value: 0px;
+	padding-bottom: 0px;
+	padding-left-value: 0px;
+	padding-left-ltr-source: physical;
+	padding-left-rtl-source: physical;
+	padding-right-ltr-source: physical;
+	padding-right-rtl-source: physical;
+	position: relative;
+}
+
+.modal-header {
+	min-height: 16.4286px;
+	border-bottom: 0px none;
+	border-bottom-width: 0px;
+	border-bottom-style: none;
+	border-bottom-color: -moz-use-text-color;
+	padding: 1px;
+	padding-top: 1px;
+	padding-right-value: 1px;
+	padding-bottom: 1px;
+	padding-left-value: 1px;
+	padding-left-ltr-source: physical;
+	padding-left-rtl-source: physical;
+	padding-right-ltr-source: physical;
+	padding-right-rtl-source: physical;
+}
+
+#HomepageLogin:hover {
+	color: white;
+}
+
+.ui-tabs .ui-tabs-nav {
+	padding-left: 0px;
+	border-bottom: 1px solid lightgray;
+	width: 300px;
+}
+
+
+
+.textclass {
+	width: 220px;
+}
+
+#ForgotPasswordId {
+	color: gray;
+	background-color: white;
+	font-size: 80%;
+	position: absolute;
+}
+
+#ForgotPasswordId1 {
+	color: gray;
+	background-color: white;
+	font-size: 80%;
+}
+
+.modal-footer {
+	text-align: right;
+	border-top: 1px solid lightgray;
+	background-color: lightgray;
+	padding: 0px;
+}
+.colcustom {
+    width: 76.3333%;
+    position: relative;
+min-height: 1px;
+padding-right: 0px;
+padding-left: 0px;
+}
+.colcustom2 {
+    width: 30.6667%;
+    position: relative;
+min-height: 1px;
+padding-right: 0px;
+padding-left: 0px;
+float: left;
+}
+.colcustom3 {
+    width: 55.3333%;
+       position: relative;
+min-height: 1px;
+padding-right: 0px;
+padding-left: 0px;
+float: left;
+}
+/* for dropdown hover  */
+.dropdown:hover .dropdown-menu {
+    display: block;
+     margin-top: 0px;
+ }

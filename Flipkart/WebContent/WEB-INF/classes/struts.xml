@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="default" extends="struts-default,json-default">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+
+		<action name="" class="org.iiitb.flipkart.common.RedirectAction"
+			method="execute">
+
+			<result name="success" type="tiles">homepage</result>
+		</action>
+
+
+		<action name="LoginAction" class="org.iiitb.flipkart.login.loginAction"
+			method="login">
+
+			<result type="json">/header.jsp</result>
+
+			<!--eg: in jsp give /flipkartLogin/login/adminHome.jsp but in struts give 
+				path as /login/adminHome.jsp -->
+
+		</action>
+		
+		<action name="ForgotPassword" class="org.iiitb.flipkart.login.ForgotPasswordAction"
+			>
+
+			<result type="json">/header.jsp</result>
+
+			<!--eg: in jsp give /flipkartLogin/login/adminHome.jsp but in struts give 
+				path as /login/adminHome.jsp -->
+
+		</action>
+		<action name="logoutAction" class="org.iiitb.flipkart.login.loginAction" method="logout">
+		<result name="success" type="tiles">homepage</result>
+		<!--eg: in jsp give /flipkartLogin/login/adminHome.jsp but in struts give path as /login/adminHome.jsp  -->
+		</action>
+		
+		<action name="HomeAction" class="org.iiitb.flipkart.login.homeAction">
+
+			<result name="success" type="tiles">homepage</result>
+
+
+
+		</action>
+		<action name="SignUp" class="org.iiitb.flipkart.login.SignUpAction"
+			method="SignUp">
+			
+			<result type="json">/header.jsp</result>
+			<result  name="error">Error.jsp</result>
+			
+			<!--eg: in jsp give /flipkartLogin/login/adminHome.jsp but in struts give path as /login/adminHome.jsp  -->
+			
+		</action>
+		<action name="cartAdditionOnSession" class="org.iiitb.flipkart.cart.CartAction"
+			method="addCartOnSession">
+			<result type="json">/productDescription.jsp</result>
+		
+		</action>
+
+		<!--Shivang Struts Starts -->
+		<action name="searchAction" class="org.iiitb.flipkart.search.AutoCompleteAction">
+			<result type="json">header.jsp</result>
+		</action>
+		
+		<action name="autoComplete" class="org.iiitb.flipkart.search.AutoCompleteAction" method="dummy">
+			<result name="success" type="tiles">baseLayout</result>
+		</action>
+
+		<action name="imageAction" class="org.iiitb.flipkart.search.ImageAction">
+		</action>
+
+		<action name="displayProduct" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="displayProduct">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+
+		
+		<action name="addCategory" class="org.iiitb.flipkart.search.categoryaction"
+			method="execute">
+			<result name="success">addCategory.jsp</result>
+		</action>
+
+		<action name="displayProductsInRange" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="displayProductsInRange">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+		
+		<action name="sortProductByAsc" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="ascSort">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+		
+		<action name="sortProductByDesc" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="descSort">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+		
+		<action name="sortProductInRangeByAsc" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="ascSortInRange">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+		
+		<action name="sortProductInRangeByDesc" class="org.iiitb.flipkart.search.AutoCompleteAction"
+			method="descSortInRange">
+			<result name="success" type="tiles">displayresults</result>
+		</action>
+		
+		
+		<!-- Gautham actions starts here -->
+		<action name="getproductAction" class="com.flipkart.actions.ProductFinder"
+			method="execute">
+			<result name="success" type="tiles">descpage</result>
+
+		</action>
+		<action name="ImageAction" class="com.flipkart.actions.ProductFinder"
+			method="getImage" />
+			
+			
+			
+			<!-- Ganesh STARTS-->
+			
+			<action name="addCart" class="org.iiitb.flipkart.cart.CartAction"
+			method="execute">
+			<result name="success" type="tiles">cartpage</result>
+		</action>
+
+		<action name="changeCart" class="org.iiitb.flipkart.cart.CartAction"
+			method="update">
+		<result name="success" type="redirect">addCart.action</result>	
+		</action>
+		
+		
+			<action name="removeCart" class="org.iiitb.flipkart.cart.CartAction"
+			method="remove">
+		<result name="success" type="redirect">addCart.action</result>	
+		</action>
+		
+		<!-- Ganesh ENDS-->
+			
+		<!--- Admin part starts here-->
+		
+		<action name="getCategoryNames"
+			class="org.iiitb.flipkart.action.category.CategoryAction" method="execute">
+			<result type="json">/addCategory.jsp</result>
+		</action>
+		<action name="newCategory"
+			class="org.iiitb.flipkart.action.category.CategoryAction" method="initialize">
+			<result name="success">/addCategory.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="newProduct" class="org.iiitb.flipkart.action.product.AddProduct"
+			method="initialize">
+			<result name="success">/addProduct.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="addProductDetails" class="org.iiitb.flipkart.action.product.AddProduct"
+			method="execute">
+			<result name="success" type = "redirect">newProduct</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="approveCategory"
+			class="org.iiitb.flipkart.action.category.ApproveCategory" method="initialize">
+			<result name="success">/category_approve.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="addNewCategory"
+			class="org.iiitb.flipkart.action.category.AddNewCategory">
+			<result name="success">/addCategory.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="addThisCategory"
+			class="org.iiitb.flipkart.action.category.AddThisCategory" method = "execute">
+			<result type = "json">/category_approve.jsp</result>
+		</action>
+		
+		<action name="checkStock"
+			class="org.iiitb.flipkart.stock.CheckStock" method = "execute">
+			<result type = "json">/checkstock.jsp</result>
+		</action>
+			
+		<!-- Admin part ends here -->
+		
+		
+		<!--  place order starts here-->
+		
+		<action name="PlaceOrderCheckUser" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="checkUser">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		<action name="PlaceOrderLoginCart" class="org.iiitb.flipkart.placeorder.loginAction" method="execute">
+			
+			<result  name="success">placeorder.jsp</result>
+			
+		</action>
+	
+		
+		
+			<action name="PlaceOrderCheckPassword" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="login">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		
+			<action name="PlaceOrderSignUpUser" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="signup">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		
+		<action name="PlaceOrderNewAddress" class="org.iiitb.flipkart.placeorder.PlaceOrderAction"
+			method="addNewAddress">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		
+		<action name="PlaceOrderDeleteAddress" class="org.iiitb.flipkart.placeorder.PlaceOrderAction"
+			method="deleteAddress">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		
+		
+		<action name="findAddress" class="org.iiitb.flipkart.placeorder.AddressAction"
+			method="execute">
+			
+			<result  type="json">placeorder.jsp</result>
+			
+		</action>
+		
+		<!--Payment action by satish  -->
+		
+		<action name="pay" class="org.iiitb.flipkart.payment.PayAction"
+			method="execute">
+			<result name="success" type="redirect">myorders.action</result>
+			<result name="error" type="redirect">addCartToPlaceorder.action</result>
+			<result name="balance">NoBalance.jsp</result>
+		</action>
+
+		<!--Payment action ends here !!  -->
+		
+		
+		
+		<action name="addCartToPlaceorder" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="execute">
+			<result name="success" >placeorder.jsp</result>
+		</action>
+		
+		
+		<action name="changeCartPlaceorder" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="update">
+		<result name="success" type="redirect">addCartToPlaceorder.action</result>	
+		</action>
+		
+		
+		<action name="removeCartPlaceOrder" class="org.iiitb.flipkart.placeorder.loginAction"
+			method="remove">
+		<result name="success" type="redirect">addCartToPlaceorder.action</result>	
+		</action>
+		
+		
+		<!-- place order ends here -->
+		
+				
+		
+		<!-- Hemu changes -->
+		<!-- USER DETAILS AND MYORDER  START -->
+		
+		<action name="personalinfo" class="org.iiitb.flipkart.userdetails.PersonalnfoAction"  method="execute">
+			<result name="success" type="tiles">personal</result>
+			<result name="error">error.jsp</result>
+			
+		</action>
+		<action name="personal" class="org.iiitb.flipkart.userdetails.PersonalnfoAction"  method="initialize">
+			 <result name="success" type="tiles">personal</result>
+			<result name="error">error.jsp</result>
+			
+		</action>
+		 <action name="myorders" class="org.iiitb.flipkart.userdetails.MyOrdersAction">
+			<result name="success" type="tiles">orders</result>
+			<result name="error">error.jsp</result>
+			<result name = "login" type = "tiles">homepage</result>
+
+		</action>
+		 <action name="address" class="org.iiitb.flipkart.userdetails.AddAddressAction"
+			method="execute">
+			<result name="success" type="tiles">address</result>
+			<result name="error">error.jsp</result>
+			
+		</action>
+		
+		 	
+		 <action name="getaddress" class="org.iiitb.flipkart.userdetails.GetAddressAction"
+			method="execute">
+			<result name="success" type="tiles">address</result>
+			<result name="error">error.jsp</result>
+			
+
+		</action>
+		
+		
+		 <action name="updateemail" class="org.iiitb.flipkart.userdetails.UpdateEmailAction"
+			method="execute">
+			<result name="success" type="tiles">updateemail</result>
+			<result name="error">error.jsp</result>
+			
+
+		</action>
+		<action name="updateEmail"  class="org.iiitb.flipkart.userdetails.ChangePasswordAction"
+			method="initialize">
+			<result name="success" type="tiles">updateemail</result>
+			<result name="error">error.jsp</result>
+			
+
+		</action>
+		 <action name="changepassword" class="org.iiitb.flipkart.userdetails.ChangePasswordAction"
+			method="execute">
+			<result name="success" type="tiles">changepassword</result>
+			<result name="error">error.jsp</result>		
+
+		</action>
+		
+		<action name="changePassword"  class="org.iiitb.flipkart.userdetails.ChangePasswordAction"
+			method="initialize">
+			<result name="success" type="tiles">changepassword</result>
+			<result name="error">error.jsp</result>
+		</action>
+	
+		
+		<action name="deactivateAccount"  class="org.iiitb.flipkart.userdetails.ChangePasswordAction"
+			method="initialize">
+			<result name="success" type="tiles">deactivate</result>
+			<result name="error">error.jsp</result>
+			
+
+		</action>
+		<action name="deactivateaccount"  class="org.iiitb.flipkart.userdetails.DeactivateAccountAction"
+			method="execute">
+			<result name="success" type="tiles">deactivate</result>
+			<result name="error">error.jsp</result>
+			
+
+		</action>
+		<action name="productImage" class="org.iiitb.flipkart.userdetails.ImageAction">	    
+		</action>
+		<!-- USER DETAILS AND MYORDER  END -->
+		
+		
+		
+<action name="accountAction" class="org.flipkart.accountinfo.accountAction" method="AccountInfo">
+<result name="success">account.jsp</result>
+<result name="error">error.jsp</result>
+</action>
+
+
+<action name="creditAction" class="org.flipkart.accountinfo.accountAction" method="CreditInfo">
+<result name="success">account.jsp</result>
+<result name="error">error.jsp</result>
+</action>
+		
+
+	</package>
+</struts>
